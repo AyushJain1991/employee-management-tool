@@ -1,0 +1,16 @@
+
+<header class="p-2 d-flex justify-content-between">
+	<span class="d-flex">
+		<!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+		<!-- <i class="fa fa-user-circle" aria-hidden="true"></i> -->
+		<img src="./assets/user-loggo.png" style="width:8%"/>
+		<!-- <fa-icon [icon]="['fas', 'film']" [border]="true"></fa-icon> -->
+		<span class="heading-text">Employee Managment Tool</span>
+	</span>
+	<span class="pt-1" *ngIf="router?.url !== '/'">
+		<button type="button" (click)="logout()" class="btn btn-sm btn-primary">Logout</button>
+	</span>
+</header>
+<router-outlet>
+  
+</router-outlet>

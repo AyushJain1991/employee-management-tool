@@ -1,0 +1,33 @@
+
+    <div class="col-12 d-flex mt-4">
+      <div class="col-6">
+        <div class="col-12 px-3">
+          <div class="alert alert-primary" role="alert">
+            Bar Graph Represents Employee Data
+          </div>
+        </div>
+        <div id="chartdiv" style="width: 100%; height: 500px"></div>
+      </div>
+      <div class="col-6 px-3">
+        <div class="col-12">
+          <div class="alert alert-primary" role="alert">
+           No. Of Employees Associated With Languages
+          </div>
+        </div>
+        <table class="table table-bordered" style="margin-top:31px;">
+          <thead>
+            <tr>
+              <th>Language</th>
+              <th>No. Of Employees</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of techDetails">
+              <td>{{user?.language}}</td>
+              <td>{{user?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  

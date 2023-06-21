@@ -1,0 +1,33 @@
+<div class="container d-flex align-items-center justify-content-center main-div">
+    <div class="col-12 border shadow rounded-2 p-3 backGround">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address*</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Please enter email"/>
+        <div class="text-danger">
+          <span *ngIf="(myForm.get('email')?.touched || submitted) && myForm.get('email')?.errors?.['required'] ">
+            Email is required
+          </span>
+          <span *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['email']">
+            Enter a valid email address
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Password*</label>
+        <input type="password" formControlName="password" class="form-control"  placeholder="Please enter passwod"/>
+        <div class="text-danger">
+            <span *ngIf="(myForm.get('password')?.touched || submitted) && myForm.get('password')?.errors?.['required'] ">
+              Password is required
+            </span>
+          </div>  
+    </div>
+      <div class="mb-3 d-flex justify-content-center">
+        <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+    </div>
+  </div>
+<!-- <ng-container *ngIf="data$ | async as data">
+	{{data | json}}
+</ng-container> -->

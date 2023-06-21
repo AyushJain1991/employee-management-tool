@@ -1,0 +1,32 @@
+
+    <div class="container mt-3">
+        <h4 class="text-center py-3">Users Records</h4>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone No</th>
+              <th>Gender</th>
+              <th>Address</th>
+              <th>Skills</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let detail of details$ | async">
+              <td>{{detail?.name}}</td>
+              <td>{{detail?.email}}</td>
+              <td>{{detail?.phoneNo}}</td>
+              <td>{{detail?.gender}}</td>
+              <td>{{detail?.address}}</td>
+              <td>{{detail?.skills}}</td>
+              <td>
+                <span class="px-1" (click)="onEdit(detail)"><i class="fas fa-edit"></i></span>
+                <span><i class="fas fa-trash" (click)="onDelete(detail)" aria-hidden="true"></i></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>

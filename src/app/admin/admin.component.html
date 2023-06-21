@@ -1,0 +1,13 @@
+<nav class="nav nav-tabs">
+  <a href="javascript:void(0);" (click)="switchTab('Reports')" class="nav-item nav-link"
+    [ngClass]="{'active': tabName === 'Reports'}">
+    Reports
+  </a>
+  <a href="javascript:void(0);" (click)="switchTab('Records')" class="nav-item nav-link"
+    [ngClass]="{'active': tabName === 'Records'}">
+    Records
+  </a>
+</nav>
+<router-outlet>
+  
+</router-outlet>

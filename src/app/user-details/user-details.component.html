@@ -1,0 +1,166 @@
+<div *ngIf="isEditable || role === 'Admin'" class="container d-flex align-items-center justify-content-center main-user-div mt-4 mb-4">
+  <div class="col-12 border backGround shadow rounded-2 p-3">
+    <div class="col-12 mb-3" style="border-bottom: 1px solid #cccccc;">
+      <h5 class="mb-3">Personal Information(PI)</h5>
+    </div>  
+    <form [formGroup]="detailsForm" (ngSubmit)="onSubmit(detailsForm)">
+      <div class="mb-3">
+        <label class="form-label">Name*</label>
+        <input type="text" formControlName="name" class="form-control" placeholder="Please enter name"/>
+        <div class="text-danger">
+          <span *ngIf="(detailsForm.get('name')?.touched || submitted) && detailsForm.get('name')?.errors?.['required']">
+            Name is required
+          </span>
+          <span *ngIf="detailsForm.get('name')?.touched && detailsForm.get('name')?.errors?.['pattern']">
+            Enter a valid name
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email*</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Please enter email"/>
+        <div class="text-danger">
+          <span *ngIf="(detailsForm.get('email')?.touched || submitted) && detailsForm.get('email')?.errors?.['required'] ">
+            Email is required
+          </span>
+          <span *ngIf="detailsForm.get('email')?.touched && detailsForm.get('email')?.errors?.['pattern']">
+            Enter a valid email address
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Phone No*</label>
+        <input type="text" formControlName="phoneNo" class="form-control" placeholder="Please enter phone no"/>
+        <div class="text-danger">
+          <span *ngIf="(detailsForm.get('phoneNo')?.touched || submitted) && detailsForm.get('phoneNo')?.errors?.['required'] ">
+            Phone Number is required
+          </span>
+          <span *ngIf="detailsForm.get('phoneNo')?.touched && detailsForm.get('phoneNo')?.errors?.['pattern']">
+            Enter a valid phone number
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div><label class="form-label">Gender*</label></div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="inlineRadio1" value="Male">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="inlineRadio2" value="Female">
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+          </div>
+          <div class="text-danger">
+            <span *ngIf="(detailsForm.get('gender')?.touched || submitted) && detailsForm.get('gender')?.errors?.['required'] ">
+              Gender is required
+            </span>
+          </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Address*</label>
+        <input type="text" formControlName="address" class="form-control" placeholder="Please enter address"/>
+        <div class="text-danger">
+          <span *ngIf="(detailsForm.get('address')?.touched || submitted) && detailsForm.get('address')?.errors?.['required'] ">
+            Address is required
+          </span>
+          <!-- <span *ngIf="detailsForm.get('address')?.touched && detailsForm.get('address')?.errors?.['pattern']">
+            Enter a valid phone number
+          </span> -->
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Skills*</label>
+        <!-- <input type="text" formControlName="skills" class="form-control"  placeholder="Please enter skills"/> -->
+        <select class="form-select" formControlName="skills" multiple aria-label="Please enter skills">
+          <option value="HTML5">HTML5</option>
+          <option value="CSS3">CSS3</option>
+          <option value="Java Script">Java Script</option>
+          <option value="Type Script">Type Script</option>
+          <option value="Angular">Angular</option>
+          <option value="React">React</option>
+          <option value="Node">Node</option>
+          <option value="Vue">Vue</option>
+          <option value="Backbone">Backbone</option>
+        </select>
+        <div class="text-danger">
+          <span *ngIf="(detailsForm.get('skills')?.touched || submitted) && detailsForm.get('skills')?.errors?.['required'] ">
+            Skills is required
+          </span>
+          
+        </div>
+    </div>
+      <div class="mb-3 d-flex justify-content-center">
+        <button type="submit" [disabled]="detailsForm.invalid" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <div *ngIf="!isEditable && role === 'User'" class="container">
+    <div class="p-4 myStyle border shadow my-4 backGround">
+    
+   <div class="col-sm-12 d-flex" style="border-bottom: 1px solid #efefef;
+     padding-bottom: 12px;
+     margin-bottom: 15px;">
+     <div class="col-sm-9 card-heading fw-bold">
+       <!-- Email: {{userEmailId}} -->
+       Personal Information
+     </div>
+    <div class="col-sm-3 text-end">
+      <div>
+        <a class="text-decoration-none" (click)="onEdit();" href="javscript:void();">Edit</a>
+      </div>
+    </div>
+   </div>
+     <div class="col-sm-12 d-flex">
+     <div class="col fw-bold font-css">
+       Name
+     </div>
+     <div class="col fw-bold font-css">
+       Email
+     </div>
+     <div class="col fw-bold font-css">
+       Phone Number
+     </div>
+   
+   </div>
+    <div class="col-sm-12 pb-2 d-flex">
+     <div class="col font-css">
+       {{detailsForm.value?.name}}
+     </div>
+     <div class="col font-css">
+      {{detailsForm.value?.email}}
+     </div>
+     <div class="col font-css">
+      {{detailsForm.value?.phoneNo}}
+     </div>
+   
+   </div>
+   
+   <div class="col-sm-12 d-flex">
+     <div class="col fw-bold font-css">
+       Gender
+     </div>
+     <div class="col fw-bold font-css">
+       Address
+     </div>
+     <div class="col fw-bold font-css">
+       Skills
+     </div>
+   </div>
+   
+   <div class="col-sm-12 d-flex pb-2">
+     <div class="col font-css">
+      {{detailsForm.value?.gender}}
+     </div>
+     <div class="col font-css">
+      {{detailsForm.value?.address}}
+     </div>
+     <div class="col font-css">
+      {{detailsForm.value?.skills}}
+     </div>
+   </div>
+   </div>
+ </div>  
+
+ 
